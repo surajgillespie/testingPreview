@@ -1,0 +1,49 @@
+#main-toolbar #activity-button {
+  background-image: url(../activity/activity-icon.svg);
+}
+
+table {
+	margin-left: 200px;
+	border-style: solid;
+	border-width: 4px;
+	border-color: black;
+}
+
+table.pickcolor {
+	margin-bottom: 20px;
+	border-style: solid;
+	border-width: 4px;
+	border-color: black;
+}
+
+#red {
+	background-color: red;
+}
+
+#blue {
+	background-color: blue;
+}
+
+#green {
+	background-color: green;
+}
+
+#black {
+	background-color: black;
+}
+
+#timer {
+	padding-left: 100px; 
+	font-size: 30px;
+	text-decoration: bold;
+}
+
+#resetbutton{
+	margin-left: 30px;
+	text-decoration: bold;
+}
+
+#startbutton{
+	margin-left: 300px;
+	text-decoration: bold;
+}

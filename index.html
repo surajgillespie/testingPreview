@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="utf-8" />
+    <title>My Activity</title>
+    <link rel="stylesheet" href="lib/sugar-web/graphics/css/sugar.css">
+    <link rel="stylesheet" href="css/activity.css">
+    <script data-main="js/loader" src="lib/require.js"></script> 
+  </head>
+  
+  <body id="bigbody">
+    <div id="main-toolbar" class="toolbar">
+      <button class="toolbutton" id="activity-button" title="My Activity"></button>
+      <!-- Add more buttons here -->
+      <!-- Buttons with class="pull-right" will be right aligned -->
+      <button class="toolbutton pull-right" id="stop-button" title="Stop"></button>
+    </div>
+    <!-- The content of your activity goes inside the canvas -->
+    <div id="canvas">
+      <!-- Replace this message with your own content -->
+       <h1>Congratulations!</h1>
+
+       <table class="pickcolor" border="3" cellpadding="20">
+        <caption>Pick the colour to paint with</caption>
+        <tr>
+          <td id="red"></td>
+          <td id="blue"></td>
+          <td id="green"></td>
+          <td id="black"></td>
+        </tr>
+       </table>
+
+       <button id="startbutton">START</button>
+       <button id="resetbutton">RESET</button>
+       <span id="timer"></span>
+       <table id="myTable" border="3" cellpadding="20">
+         <tbody id="tablebody"></tbody>
+       </table>
+
+    </div>
+  </body>
+
+</html>
