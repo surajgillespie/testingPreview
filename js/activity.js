@@ -1,6 +1,14 @@
 define(function (require) {
     var activity = require("sugar-web/activity/activity");
     var icon = require("sugar-web/graphics/icon");
+    var datastore = require("sugar-web/datastore");
+    var active=0;
+    var colourarray=["red","blue","green","black"];
+    var cid=0,points=0;
+    var count;
+    var counter;
+    var highscore=0;
+
 
     // Manipulate the DOM only when it is ready.
     require(['domReady!'], function (doc) {
@@ -16,15 +24,17 @@ define(function (require) {
 
         // Make the activity stop with the stop button.
         var stopButton = document.getElementById("stop-button");
+        var datastoreObject = activity.getDatastoreObject();
         stopButton.onclick = function () {
-            activity.close();
-        };
+            console.log("score : "+highscore);
+            var jsonData = JSON.stringify(highscore.toString());
+            datastoreObject.setDataAsText(jsonData);
+            datastoreObject.save(function () {
+                activity.close();
+            });
+         };
+
         
-        var active=0;
-        var colourarray=["red","blue","green","black"];
-        var cid=0,points=0;
-        var count;
-        var counter;
 
         createCanvas();
 
@@ -44,6 +54,21 @@ define(function (require) {
                 tbody.appendChild( row );
             } // end for
         }
+
+        
+
+        function onLoaded(error, metadata, data) {
+            console.log(metadata);
+            console.log(data);
+            highscore=parseInt(JSON.parse(data));
+            
+            console.log(highscore);
+            document.getElementById("highscore").innerHTML=highscore;
+        }
+
+        datastoreObject.loadAsText(onLoaded);
+
+        document.getElementById("highscore").innerHTML=highscore;  
 
         function processMouseMove( e )
         {
@@ -151,14 +176,18 @@ define(function (require) {
 
       }
 
+
       function gameComplete()
       {
           active=0;
           document.getElementById("timer").innerHTML="GAME OVER!! You scored "+points+" point/s";
+          
+          if(points>highscore)
+            {document.getElementById("highscore").innerHTML=points;
+             highscore=points;
+            }
 
       }
-
-
 
     });
 
